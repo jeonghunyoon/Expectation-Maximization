@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 '''
 complete log likelihood :
 latent variable이 알려져 있다.
