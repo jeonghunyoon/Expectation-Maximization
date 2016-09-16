@@ -27,14 +27,14 @@ def single_em(thetas, observations):
         likelihood_a = binom.pmf(num_head, ob_len, theta_a)
         likelihood_b = binom.pmf(num_head, ob_len, theta_b)
 
-        # posteria of a and b (prior는 1/2로 고정)
-        posteria_a = likelihood_a / (likelihood_a + likelihood_b)
-        posteria_b = likelihood_b / (likelihood_a + likelihood_b)
+        # posterior of a and b (prior는 1/2로 고정)
+        posterior_a = likelihood_a / (likelihood_a + likelihood_b)
+        posterior_b = likelihood_b / (likelihood_a + likelihood_b)
 
-        counts['A']['H'] += (posteria_a * num_head)
-        counts['A']['T'] += (posteria_a * num_tail)
-        counts['B']['H'] += (posteria_b * num_head)
-        counts['B']['T'] += (posteria_b * num_tail)
+        counts['A']['H'] += (posterior_a * num_head)
+        counts['A']['T'] += (posterior_a * num_tail)
+        counts['B']['H'] += (posterior_b * num_head)
+        counts['B']['T'] += (posterior_b * num_tail)
 
     # maximization step
     new_theta_a = counts['A']['H'] / (counts['A']['H'] + counts['A']['T'])
